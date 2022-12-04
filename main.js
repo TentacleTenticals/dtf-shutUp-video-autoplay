@@ -7,6 +7,8 @@
 // @author      Tentacle Tenticals
 // @description Убирает автозапуск видео в статьях на DTF
 // @homepage https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay
+// @updateURL   https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay/master/main.js
+// @downloadURL https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay/master/main.js
 // @license MIT
 // ==/UserScript==
 /* jshint esversion:8 */
