@@ -24,7 +24,6 @@
             if(args[0]){
               if(typeof args[0] === 'string'){
                 if(args[0].match(/\[ Air \] Ready.*/)){
-                  log('Запускаю поиск видео...');
                   obsRun();
                 }
               }
@@ -34,7 +33,7 @@
     }}
     function obsRun(){
         //if(!obsStarted){
-          console.log(`OBS активирован`);
+          if(!document.querySelector(`div[class^=content][class*=content--full]`)) return;
           const callback = (mutationList, observer) => {
               for (const mutation of mutationList) {
                 if (mutation.type === 'childList') {
@@ -44,21 +43,22 @@
                     for(let i = 0, arr = mutation.addedNodes; i < arr.length; i++){
                         // console.log(arr[i])
                         if(arr[i].tagName === 'VIDEO'){
-                            console.log('Video founded!!!');
+                            console.log('Видео найдено, переписываю атрибуты.');
                             arr[i].removeAttribute('autoplay');
                             //arr[i].removeAttribute('muted');
                             arr[i].setAttribute('preload', 'none');
                             arr[i].setAttribute('controls', '');
                             arr[i].currentTime = 0;
-                            arr[i].volume = 0.2;
+                            //arr[i].volume = 0.2;
                             arr[i].pause();
-                            }
+                        }
                     }
                 }
               }
           };
           const observer = new MutationObserver(callback);
           observer.observe(document.querySelector(`div[class^=content][class*=content--full]`), {attributes: true, childList: true, subtree: true});
+          console.log(`OBS активирован`);
           //obsStarted = true;
         //}
     }
