@@ -3,10 +3,10 @@
 // @namespace   https://github.com/TentacleTenticals
 // @match       https://dtf.ru/*
 // @grant       none
-// @version     1.0
+// @version     1.1
 // @author      Tentacle Tenticals
 // @description Убирает автозапуск видео в статьях на DTF
-// @homepage https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay
+// @homepage https://github.com/TentacleTenticals/
 // @updateURL   https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay/raw/main/main.js
 // @downloadURL https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay/raw/main/main.js
 // @license MIT
@@ -15,7 +15,7 @@
 
 (function() {
     'use strict';
-    let obsStarted = false;
+   //let obsStarted = false;
 
     {
     const log = console.log.bind(console)
@@ -33,7 +33,7 @@
           log(...args);
     }}
     function obsRun(){
-        if(!obsStarted){
+        //if(!obsStarted){
           console.log(`OBS активирован`);
           const callback = (mutationList, observer) => {
               for (const mutation of mutationList) {
@@ -59,7 +59,7 @@
           };
           const observer = new MutationObserver(callback);
           observer.observe(document.querySelector(`div[class^=content][class*=content--full]`), {attributes: true, childList: true, subtree: true});
-          obsStarted = true;
-        }
+          //obsStarted = true;
+        //}
     }
 })();
