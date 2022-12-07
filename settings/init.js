@@ -11,6 +11,18 @@
 // ==/UserScript==
 /* jshint esversion:8 */
 
+let db = {
+  indexedDB: (window.indexedDB||window.mozIndexedDB||window.webkitIndexedDB||window.msIndexedDB||window.shimIndexedDB),
+  name: "DTF scripts database",
+  version: 1,
+  store: "DTF-shutUp-autoplay-videos",
+  key: "uid",
+  data: {
+    uid: 'settings',
+    description: 'Список настроек для скрипта DTFshutUp-autoplay-videos'
+  }
+}
+
 function init(settings){
   settings ? mainSettings = mergeSettings(defaultSettings, settings) : mainSettings = defaultSettings;
   new Settings({
