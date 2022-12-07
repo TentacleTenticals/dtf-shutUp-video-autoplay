@@ -6,7 +6,8 @@
 // @version     1.0
 // @author      Tentacle Tenticals
 // @description Класс настроек DTF скрипта. Используются для меню настроек
-// @homepage https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay
+// @homepage    https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay
+// @require     https://github.com/TentacleTenticals/dtf-libs/raw/main/libs/settings/classes.js
 // @license MIT
 // ==/UserScript==
 /* jshint esversion:8 */
