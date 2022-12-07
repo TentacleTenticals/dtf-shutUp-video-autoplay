@@ -141,6 +141,7 @@ class Container{
   constructor(path){
     this.main=document.createElement('div');
     path.appendChild(this.main);
+    return this.main;
   }
 }
 
