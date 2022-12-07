@@ -14,12 +14,16 @@
 class Settings {
   constructor(params){
     this.main=document.createElement('div');
-    this.main.className='settings';
+    this.main.className='DTF-settings';
     this.main.id='DTF-settings';
     document.body.appendChild(this.main);
 
     this.close=document.createElement('button');
     this.close.textContent='Закрыть настройки';
+    this.close.style=`
+      width: 100%;
+      box-shadow: 0px 0px 2px 0px black;
+    `;
     this.close.onclick=() => {
       this.main.remove();
     }
