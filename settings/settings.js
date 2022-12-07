@@ -19,10 +19,12 @@ class Settings {
     document.body.appendChild(this.main);
 
     this.close=document.createElement('button');
+    this.close.className='btn';
     this.close.textContent='Закрыть настройки';
     this.close.style=`
       width: 100%;
       box-shadow: 0px 0px 2px 0px black;
+      cursor: pointer;
     `;
     this.close.onclick=() => {
       this.main.remove();
