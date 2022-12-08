@@ -22,6 +22,43 @@ let db = {
     description: 'Список настроек для скрипта DTFshutUp-autoplay-videos'
   }
 }
+function changeVideoAttr(backtoDef, video){
+  if(!backToDef){
+    video.removeAttribute('autoplay');
+    mainSettings['what to change']['mute off'] ? video.removeAttribute('muted') : '';
+    mainSettings['what to change']['video preload'] ? video.setAttribute('preload', mainSettings['video settings']['preload type']) : '';
+    video.setAttribute('controls', '');
+    video.classList.add('clicked');
+    video.volume = mainSettings['video settings']['volume level'];
+    if(!video.paused) arr.pause();
+    video.currentTime = 0;
+    video.onplay = () => {
+      if(!video.classList.value.match('yes')) video.pause();
+    };
+    video.onclick = () => {
+      video.classList.toggle('yes');
+    };
+  }else
+  if(backToDef){
+    video.setAttribute('autoplay', '');
+    video.setAttribute('preload', 'none');
+    video.setAttribute('controls', '');
+    video.currentTime = 0;
+    video.onplay = null;
+    video.onclick = null;
+  }
+}
+// Функция для установки атрибутов видео
+function setAttributes({def, target}){
+    for(let i = 0, arr = document.querySelectorAll(target); i < arr.length; i++){
+        if(def){
+            changeVideoAttr(true, arr[i]);
+        }else
+        if(!def){
+            changeVideoAttr(false, arr[i]);
+        }
+    }
+}
 class Autoplay{
   constructor(path){
     if(document.getElementById('videoAutoplay')) return;
