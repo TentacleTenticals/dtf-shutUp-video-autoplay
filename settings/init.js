@@ -49,14 +49,17 @@ function changeVideoAttr(backtoDef, video){
   }
 }
 // Функция для установки атрибутов видео
-function setAttributes({def, target}){
+function setAttributes({def, mute, target}){
     for(let i = 0, arr = document.querySelectorAll(target); i < arr.length; i++){
-        if(def){
+        if(def && !mute){
             changeVideoAttr(true, arr[i]);
         }else
-        if(!def){
+        if(!def && !mute){
             changeVideoAttr(false, arr[i]);
-        }
+        }else
+        if(!def && mute){
+          mute === 'on' ? arr[i].setAttribute('muted') : arr[i].removeAttribute('muted');
+        };
     }
 }
 class Autoplay{
@@ -86,7 +89,7 @@ class Autoplay{
       text: '📰',
       checked: mainSettings['what to stop']['topic video'],
       onchange: () => {
-      if(this.inputTopic.checked){
+      if(this.checked){
         if(!obs.topic){
           obs.topic = observer({
             target: document.querySelector(`div[class^=content][class*=content--full]`),
@@ -106,7 +109,7 @@ class Autoplay{
           setAttributes({def:false, target:`div[class^=content][class*=content--full] video`});
         }
       }else
-      if(!this.inputTopic.checked){
+      if(!this.checked){
         if(!obs.topic){
           console.log('[Autoplay topic] Активация автозапуска видео.');
           setAttributes({def:true, target:`div[class^=content][class*=content--full] video`});
@@ -128,7 +131,7 @@ class Autoplay{
       text: '📜',
       checked: mainSettings['what to stop']['comments video'],
       onchange: () => {
-      if(this.inputComments.checked){
+      if(this.checked){
         if(!obs.comments){
           obs.comments = observer({
             target: document.querySelector(`div[class^=comments][class*=comments--ready]`),
@@ -148,7 +151,7 @@ class Autoplay{
           setAttributes({def:false, target:`div[class^=comments][class*=comments--ready] video`});
         }
       }else
-      if(!this.inputComments.checked){
+      if(!this.checked){
         if(!obs.comments){
           console.log('[Autoplay comments] Активация автозапуска видео.');
           setAttributes({def:true, target:`div[class^=comments][class*=comments--ready] video`});
@@ -168,7 +171,17 @@ class Autoplay{
       type: 'checkbox',
       id: 'autoplay-mute',
       text: 'Mute',
-      checked: mainSettings['what to change']['mute off']
+      checked: mainSettings['what to change']['mute off'],
+      onchange: () => {
+        if(this.checked){
+          setAttributes({def:false, mute:'on', target:`div[class^=content][class*=content--full] video`});
+          setAttributes({def:false, mute:'on', target:`div[class^=comments][class*=comments--ready] video`});
+        }else
+        if(!this.checked){
+          setAttributes({def:false, mute:'off', target:`div[class^=content][class*=content--full] video`});
+          setAttributes({def:false, mute:'off', target:`div[class^=comments][class*=comments--ready] video`});
+        }
+      }
     })
   }
 }
