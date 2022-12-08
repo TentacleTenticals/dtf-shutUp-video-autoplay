@@ -12,10 +12,10 @@
 // @require     https://github.com/TentacleTenticals/dtf-libs/raw/main/libs/settings/cssAppender.js
 // @require     https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay/raw/main/settings/defaultSettings.js
 // @require     https://github.com/TentacleTenticals/dtf-libs/raw/main/libs/obs.js
-// @require     https://raw.githubusercontent.com/TentacleTenticals/dtf-libs/main/libs/settings/DTF%20settings%20opener.js
-// @require     https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay/raw/main/settings/init.js
+// @require     https://github.com/TentacleTenticals/dtf-libs/raw/beta/libs/settings/DTF%20settings%20opener.js
+// @require     https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay/raw/beta/settings/init.js
 // @require     https://github.com/TentacleTenticals/dtf-libs/raw/main/libs/DTF%20page%20load%20detector.js
-// @require     https://github.com/TentacleTenticals/dtf-libs/raw/main/libs/DTF%20header.js
+// @require     https://raw.githubusercontent.com/TentacleTenticals/dtf-libs/main/libs/DTF%20header.js
 // @require     https://github.com/TentacleTenticals/dtf-libs/raw/main/libs/settings/classes.js
 // @require     https://github.com/TentacleTenticals/dtf-shutUp-video-autoplay/raw/main/settings/settings.js
 // @require     https://raw.githubusercontent.com/TentacleTenticals/dtf-libs/main/libs/settings/indexedDB.js
