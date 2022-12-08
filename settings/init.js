@@ -195,12 +195,12 @@ class SettingsItem{
   }
 }
 
-function init(settings){
-  settings ? mainSettings = mergeSettings(defaultSettings, settings) : mainSettings = defaultSettings;
-  new SettingsOpener(document.body);
-  if(!document.getElementById('stg-DTF-shutUp-video-autoplay')) new SettingsItem();
-  new DtfHeader(document.querySelector(`div[class^=content][class*=content--full]`).children[0], document.querySelector(`div[class^=content][class*=content--full]`).children[0]);
-  new Autoplay(document.getElementById('Dtf-header'));
+function setMinisettings(){
+  let autoplay = document.getElementById('videoAutoplay');
+  autoplay.children[1].children[0].checked = mainSettings['what to stop']['topic video'];
+  autoplay.children[2].children[0].checked = mainSettings['what to stop']['comments video'];
+  autoplay.children[3].children[0].checked = mainSettings['what to change']['mute off'];
+  
   if(document.getElementById('autoplay-topic').checked){
     obs.topic = observer({
       target: document.querySelector(`div[class^=content][class*=content--full]`),
@@ -229,5 +229,14 @@ function init(settings){
   })
   setAttributes({def:false, target:`div[class^=comments][class*=comments--ready] video`});
   }
+}
+
+function init(settings){
+  settings ? mainSettings = mergeSettings(defaultSettings, settings) : mainSettings = defaultSettings;
+  new SettingsOpener(document.body);
+  if(!document.getElementById('stg-DTF-shutUp-video-autoplay')) new SettingsItem();
+  new DtfHeader(document.querySelector(`div[class^=content][class*=content--full]`).children[0], document.querySelector(`div[class^=content][class*=content--full]`).children[0]);
+  new Autoplay(document.getElementById('Dtf-header'));
+  setMinisettings();
   console.log(`[init] Инициализация скрипта успешно выполнена.`, mainSettings);
 }
