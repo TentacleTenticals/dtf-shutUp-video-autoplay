@@ -67,7 +67,7 @@ class Autoplay{
     this.main.id='videoAutoplay';
     this.main.style=`
     display: grid;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(4, max-content);
     column-gap: 10px;
     margin: auto;`;
     path.appendChild(this.main);
