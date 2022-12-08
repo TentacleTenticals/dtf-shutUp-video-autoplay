@@ -30,7 +30,7 @@ function changeVideoAttr(backToDef, video){
     video.setAttribute('controls', '');
     video.classList.add('clicked');
     video.volume = mainSettings['video settings']['volume level'];
-    if(!video.paused) arr.pause();
+    if(!video.paused) video.pause();
     video.currentTime = 0;
     video.onplay = () => {
       if(!video.classList.value.match('yes')) video.pause();
