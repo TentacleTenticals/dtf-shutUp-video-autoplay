@@ -148,9 +148,6 @@ class Container{
 
 function init(settings){
   settings ? mainSettings = mergeSettings(defaultSettings, settings) : mainSettings = defaultSettings;
-  new Settings({
-    path: document.body
-  })
   new DtfHeader(document.querySelector(`div[class^=content][class*=content--full]`).children[0], document.querySelector(`div[class^=content][class*=content--full]`).children[0]);
   new Autoplay(document.getElementById('Dtf-header'));
   if(document.getElementById('autoplay-topic').checked){
