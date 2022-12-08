@@ -128,7 +128,7 @@ class Autoplay{
       type: 'checkbox',
       id: 'autoplay-comments',
       text: '📜',
-      checked: mainSettings['what to stop']['topic comments'],
+      checked: mainSettings['what to stop']['comments video'],
       onchange: () => {
       if(this.inputComments.checked){
         if(!obs.comments){
