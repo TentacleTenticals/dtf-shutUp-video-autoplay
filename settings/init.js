@@ -201,7 +201,7 @@ class SettingsItem{
     this.main.onclick=() => {
       new Settings();
     }
-    document.getElementById('DTF-settingsOpener').children[1].appendChild(this.main);
+    document.getElementById('DTF-settingsOpener').children[2].appendChild(this.main);
   }
 }
 
