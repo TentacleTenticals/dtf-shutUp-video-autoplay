@@ -13,6 +13,7 @@
 
 class Settings {
   constructor(params){
+    if(document.getElementById('DTF-settings')) return;
     this.main=document.createElement('div');
     this.main.className='DTF-settings';
     this.main.id='DTF-settings';
