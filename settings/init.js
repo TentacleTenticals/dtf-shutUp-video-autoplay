@@ -170,7 +170,7 @@ class Autoplay{
       path: this.main,
       type: 'checkbox',
       id: 'autoplay-mute',
-      text: 'Mute',
+      text: '🔇',
       checked: mainSettings['what to change']['mute off'],
       onchange: () => {
         if(this.checked){
