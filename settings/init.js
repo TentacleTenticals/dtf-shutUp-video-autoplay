@@ -24,7 +24,7 @@ let db = {
 }
 class Autoplay{
   constructor(path){
-    if(!document.getElementById('videoAutoplay')) return;
+    if(document.getElementById('videoAutoplay')) return;
     this.main=document.createElement('div');
     this.main.className='videoAutoplay';
     this.main.id='videoAutoplay';
