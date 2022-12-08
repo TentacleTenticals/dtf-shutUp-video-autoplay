@@ -79,9 +79,8 @@ class Autoplay{
     font-size: 13px;`
     this.main.appendChild(this.header);
 
-    this.g1=new Container(this.main);
     new Input({
-      path: this.g1,
+      path: this.main,
       type: 'checkbox',
       id: 'autoplay-topic',
       text: '📰',
@@ -122,9 +121,8 @@ class Autoplay{
     }
     });
 
-    this.g2=new Container(this.main);
     new Input({
-      path: this.g2,
+      path: this.main,
       type: 'checkbox',
       id: 'autoplay-comments',
       text: '📜',
@@ -165,9 +163,8 @@ class Autoplay{
     }
     });
 
-    this.g3=new Container(this.main);
     new Input({
-      path: this.g3,
+      path: this.main,
       type: 'checkbox',
       id: 'autoplay-mute',
       text: 'Mute',
