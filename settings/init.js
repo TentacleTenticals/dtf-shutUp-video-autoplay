@@ -187,6 +187,7 @@ class SettingsItem{
     this.main=document.createElement('button');
     this.main.className='btn';
     this.main.id='stg-DTF-shutUp-video-autoplay';
+    this.main.textContent='DTF shutUp video autoplay';
     this.main.onclick=() => {
       new Settings();
     }
