@@ -22,7 +22,7 @@ let db = {
     description: 'Список настроек для скрипта DTFshutUp-autoplay-videos'
   }
 }
-function changeVideoAttr(backtoDef, video){
+function changeVideoAttr(backToDef, video){
   if(!backToDef){
     video.removeAttribute('autoplay');
     mainSettings['what to change']['mute off'] ? video.removeAttribute('muted') : '';
