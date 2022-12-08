@@ -182,9 +182,22 @@ class Container{
     return this.main;
   }
 }
+class SettingsItem{
+  constructor(){
+    this.main=document.createElement('button');
+    this.main.className='btn';
+    this.main.id='stg-DTF-shutUp-video-autoplay';
+    this.main.onclick=() => {
+      new Settings();
+    }
+    document.getElementById('DTF-settingsOpener').children[1].appendChild(this.main);
+  }
+}
 
 function init(settings){
   settings ? mainSettings = mergeSettings(defaultSettings, settings) : mainSettings = defaultSettings;
+  new SettingsOpener(document.body);
+  if(!document.getElementById('stg-DTF-shutUp-video-autoplay')) new SettingsItem();
   new DtfHeader(document.querySelector(`div[class^=content][class*=content--full]`).children[0], document.querySelector(`div[class^=content][class*=content--full]`).children[0]);
   new Autoplay(document.getElementById('Dtf-header'));
   if(document.getElementById('autoplay-topic').checked){
