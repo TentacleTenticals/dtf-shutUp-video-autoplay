@@ -89,7 +89,7 @@ class Video{
       this.main.appendChild(this.preview);
 
       this.previewButton=document.createElement('button');
-      this.previewButton.textContent='TEST';
+      this.previewButton.textContent='▶️';
       this.previewButton.onclick=() => {
         this.preview.remove();
         this.video.preload='metadata';
