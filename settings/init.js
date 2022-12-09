@@ -281,7 +281,11 @@ function setMinisettings(){
       func: (arr) => {
         if(arr.tagName === 'VIDEO'){
           console.log('[OBS topic] Видео найдено, переписываю атрибуты.');
-          changeVideoAttr(false, arr);
+          new Video({
+            path: arr.parentNode.parentNode.parentNode,
+            video: arr,
+            preview: true
+          })
         }
       }
     })
