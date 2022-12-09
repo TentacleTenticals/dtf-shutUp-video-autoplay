@@ -61,7 +61,41 @@ function setAttributes({def, mute, target}){
           mute === 'on' ? arr[i].setAttribute('muted') : arr[i].removeAttribute('muted');
         };
     }
-}
+};
+class Video{
+  constructor({path, preview, video}){
+    this.main=document.createElement('div');
+    this.main.className='DTF-video';
+    path.replaceWith(this.main);
+
+    this.video=document.createElement('video');
+    this.video.src=video.getAttribute('data-video-mp4');
+
+    if(preview){
+      this.preview=document.createElement('div');
+      this.preview.className='preview';
+      this.main.appendChild(this.preview);
+
+      this.previewButton=document.createElement('button');
+      this.previewButton.textContent='TEST';
+      this.previewButton.onclick=() => {
+        this.preview.remove();
+        this.video.preload='metadata';
+      }
+      this.preview.appendChild(this.previewButton);
+    }
+
+    this.video.controls=true;
+    this.video.playsInline=true;
+    this.video.muted=mainSettings['what to change']['mute off'];
+    mainSettings['what to change']['video preload'] ? video.setAttribute('preload', mainSettings['video settings']['preload type']) : '';
+    this.main.appendChild(this.video);
+    preview ? this.preview.style=`
+      width: ${this.video.clientWidth}px;
+      height: ${this.video.clientHeight}px;
+      background-image: url(${video.getAttribute('data-video-thumbnail')})` : '';
+  }
+};
 class Autoplay{
   constructor(path){
     if(document.getElementById('videoAutoplay')) return;
@@ -97,8 +131,12 @@ class Autoplay{
             msg: '[OBS topic] активирован',
             func: (arr) => {
               if(arr.tagName === 'VIDEO'){
-                console.log('[OBS topic] Видео найдено, переписываю атрибуты.');
-                changeVideoAttr(false, arr);
+                console.log('[OBS topic] Видео найдено, создаю элементы.');
+                new Video({
+                  path: arr.parentNode.parentNode.parentNode,
+                  video: arr,
+                  preview: true
+                });
               }
             }
           })
@@ -248,5 +286,5 @@ function init(settings){
   new DtfHeader(document.querySelector(`div[class^=content][class*=content--full]`).children[0], document.querySelector(`div[class^=content][class*=content--full]`).children[0]);
   new Autoplay(document.getElementById('Dtf-header'));
   setMinisettings();
-  console.log(`[init] Инициализация скрипта успешно выполнена.`, mainSettings);
+  console.log(`[Init] Инициализация скрипта успешно выполнена.`, mainSettings);
 }
