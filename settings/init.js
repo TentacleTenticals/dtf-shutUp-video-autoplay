@@ -104,8 +104,8 @@ class Video{
     mainSettings['what to change']['video preload'] ? video.setAttribute('preload', mainSettings['video settings']['preload type']) : '';
     this.main.appendChild(this.video);
     preview ? this.preview.style=`
-      width: ${this.video.clientWidth}px;
-      height: ${this.video.clientHeight}px;
+      width: ${this.video.offsetWidth}px;
+      height: ${this.video.offsetHeight}px;
       background-image: url(${video.getAttribute('data-video-thumbnail')})` : '';
   }
 };
@@ -159,7 +159,7 @@ class Autoplay{
                 new Video({
                   path: arr.parentNode.parentNode.parentNode,
                   video: arr,
-                  preview: true
+                  preview: mainSettings['video settings']['preview']
                 });
               }
             }
