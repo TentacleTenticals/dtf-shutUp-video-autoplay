@@ -48,6 +48,18 @@ function changeVideoAttr(backToDef, video){
     video.onclick = null;
   }
 }
+function videoSearcher(target, type){
+  if(document.querySelector(`${target} figure div[class^='andropov_video']`) && document.querySelector(`figure div[class^='andropov_video']`).getAttribute('data-video-service') === 'default') for(let i = 0, arr = document.querySelectorAll(`figure div[class^='andropov_video']`); i < arr.length; i++){
+    if(arr[i].getAttribute('data-video-mp4') && arr[i].getAttribute('data-video-service') === 'default'){
+      console.log(`[Init ${type}] Видео найдено, переписываю.`)
+      new Video({
+        path: arr[i].parentNode.parentNode.parentNode,
+        video: arr[i],
+        preview: true
+      })
+    }
+  }
+}
 // Функция для установки атрибутов видео
 function setAttributes({def, mute, target}){
     for(let i = 0, arr = document.querySelectorAll(target); i < arr.length; i++){
@@ -105,7 +117,7 @@ class Autoplay{
     this.main.id='videoAutoplay';
     this.main.style=`
     display: grid;
-    grid-template-columns: repeat(4, max-content);
+    grid-template-columns: repeat(5, max-content);
     column-gap: 10px;
     margin: auto;`;
     path.appendChild(this.main);
@@ -116,6 +128,17 @@ class Autoplay{
     this.header.style=`
     font-size: 13px;`
     this.main.appendChild(this.header);
+    
+    this.num=document.createElement('div');
+    thus.num.className='num';
+    for(let i = 0, arr = document.querySelectorAll(`div[class^=content][class*=content--full] figure div[class^='andropov_video']`); i < arr.length; i++){
+      let n = 0;
+      if(arr[i].getAttribute('data-video-mp4') && arr[i].getAttribute('data-video-service') === 'default'){
+        n++;
+      }
+      this.num.textContent=n;
+    }
+    this.main.appendChild(this.num);
 
     new Input({
       path: this.main,
@@ -246,9 +269,9 @@ class SettingsItem{
 
 function setMinisettings(){
   let autoplay = document.getElementById('videoAutoplay');
-  autoplay.children[1].children[0].checked = mainSettings['what to stop']['topic video'];
-  autoplay.children[2].children[0].checked = mainSettings['what to stop']['comments video'];
-  autoplay.children[3].children[0].checked = mainSettings['what to change']['mute off'];
+  autoplay.children[2].children[0].checked = mainSettings['what to stop']['topic video'];
+  autoplay.children[3].children[0].checked = mainSettings['what to stop']['comments video'];
+  autoplay.children[4].children[0].checked = mainSettings['what to change']['mute off'];
   
   if(document.getElementById('autoplay-topic').checked){
     obs.topic = observer({
