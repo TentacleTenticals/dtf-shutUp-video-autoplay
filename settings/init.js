@@ -130,7 +130,7 @@ class Autoplay{
     this.main.appendChild(this.header);
     
     this.num=document.createElement('div');
-    thus.num.className='num';
+    this.num.className='num';
     for(let i = 0, arr = document.querySelectorAll(`div[class^=content][class*=content--full] figure div[class^='andropov_video']`); i < arr.length; i++){
       let n = 0;
       if(arr[i].getAttribute('data-video-mp4') && arr[i].getAttribute('data-video-service') === 'default'){
