@@ -274,22 +274,8 @@ function setMinisettings(){
   autoplay.children[4].children[0].checked = mainSettings['what to change']['mute off'];
   
   if(document.getElementById('autoplay-topic').checked){
-    obs.topic = observer({
-      target: document.querySelector(`div[class^=content][class*=content--full]`),
-      search: /andropov_video__container/,
-      msg: '[OBS topic] активирован',
-      func: (arr) => {
-        if(arr.tagName === 'VIDEO'){
-          console.log('[OBS topic] Видео найдено, переписываю атрибуты.');
-          new Video({
-            path: arr.parentNode.parentNode.parentNode,
-            video: arr,
-            preview: true
-          })
-        }
-      }
-    })
-    setAttributes({def:false, target:`div[class^=content][class*=content--full] video`});
+    videoSearcher(`div[class^=content][class*=content--full]`, 'topic');
+//     setAttributes({def:false, target:`div[class^=content][class*=content--full] video`});
   }
   if(document.getElementById('autoplay-comments').checked){
     obs.comments = observer({
