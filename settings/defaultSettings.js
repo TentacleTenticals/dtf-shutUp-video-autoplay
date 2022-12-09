@@ -22,6 +22,7 @@ let defaultSettings = {
     'change volume': true
   },
   'video settings': {
+    'preview': true,
     'preload type': 'none',
     'volume level': 0.5
   }
