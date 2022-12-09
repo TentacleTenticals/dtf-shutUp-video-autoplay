@@ -88,6 +88,7 @@ class Video{
     this.video.controls=true;
     this.video.playsInline=true;
     this.video.muted=mainSettings['what to change']['mute off'];
+    this.video.volume=mainSettings['video settings']['volume level'];
     mainSettings['what to change']['video preload'] ? video.setAttribute('preload', mainSettings['video settings']['preload type']) : '';
     this.main.appendChild(this.video);
     preview ? this.preview.style=`
