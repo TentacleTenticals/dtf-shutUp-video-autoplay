@@ -98,6 +98,12 @@ class Settings {
       width: 100%;`,
       items: [
         {
+          type: 'checkbox',
+          name: 'preview',
+          value: mainSettings['video settings']['preview'],
+          text: 'Показывать превью видео (thumbnail)'
+        },
+        {
           type: 'number',
           name: 'volume level',
           value: mainSettings['video settings']['volume level'],
